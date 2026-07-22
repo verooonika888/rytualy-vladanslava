@@ -2,7 +2,8 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Жорстке обмеження масштабування для мобільних пристроїв -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Влада | Жриця Гекати - Планетарні Ритуали</title>
     
     <!-- Підключення шрифтів -->
@@ -80,9 +81,8 @@
 </head>
 <body class="antialiased relative selection:bg-garnetLight selection:text-white">
 
-    <!-- ФОНОВЕ ФОТО (Приглушений зелений, зерно) -->
-    <div class="fixed inset-0 w-full h-full bg-[#1b261f] z-[-4] pointer-events-none"></div>
-    <div class="fixed inset-0 w-full h-full bg-[url('bg.jpg')] bg-cover bg-center bg-no-repeat z-[-3] opacity-50 mix-blend-luminosity pointer-events-none"></div>
+    <!-- ФОНОВЕ ФОТО (Прибрано зелений, видимість фото 30%) -->
+    <div class="fixed inset-0 w-full h-full bg-[url('bg.jpg')] bg-cover bg-center bg-no-repeat z-[-3] opacity-30 pointer-events-none"></div>
     <div class="fixed inset-0 w-full h-full bg-gradient-to-b from-[#050101]/50 via-[#0a0202]/85 to-[#050101] z-[-2] pointer-events-none"></div>
 
     <!-- Декоративне світіння -->
@@ -113,7 +113,7 @@
             </div>
         </header>
 
-        <!-- Декоративна полоса символів (Завжди притиснута до самого низу першого екрану) -->
+        <!-- Декоративна полоса символів -->
         <div class="w-full border-y border-line py-5 md:py-6 flex justify-center flex-wrap gap-5 md:gap-16 text-2xl md:text-3xl text-textHighlight font-serif opacity-80 mt-auto">
             <a href="#sun" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Сонце">&#9737;</a>
             <a href="#moon" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Місяць">&#9789;</a>
@@ -719,13 +719,11 @@
             <p>© 2026 | ВЛАДА — ЖРИЦЯ ГЕКАТИ</p>
             
             <div class="flex gap-8 mt-6 md:mt-0">
-                <!-- ВСТАВТЕ ВАШІ ПОСИЛАННЯ ТУТ (замість #) -->
                 <a href="#" target="_blank" class="hover:text-textHighlight transition">Instagram</a>
                 <a href="#" target="_blank" class="hover:text-textHighlight transition">Telegram</a>
             </div>
             
             <div class="flex gap-6 mt-6 md:mt-0">
-                <!-- ВСТАВТЕ ПОСИЛАННЯ НА ОФЕРТУ ТУТ -->
                 <a href="#" target="_blank" class="hover:text-textHighlight transition">Договір оферти</a>
             </div>
         </div>
