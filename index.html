@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Влада | Жриця Гекати - Планетарні Ритуали</title>
+    
+    <!-- Підключення шрифтів (Playfair Display для заголовків, Montserrat для тексту) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgDark: '#050101',      // Глибокий чорний з гранатовим підтоном
+                        bgCard: '#0a0202',      // Трохи світліший для карток
+                        garnet: '#800020',      // Темний гранат
+                        garnetLight: '#a31535', // Рубіновий акцент
+                        textHighlight: '#ffb3c6', // Ніжно-рожевий/світло-рубіновий для тексту
+                        textMuted: '#bfa3a8'    // Приглушений сіро-рожевий для описів
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            color: #f4f4f5; 
+            background-color: #050101; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; /* Плавний скрол */
+            /* Виразна зерниста текстура (шум) для всього сайту та фото */
+            background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+        }
+        
+        /* Гранатові кнопки */
+        .btn-primary {
+            background: linear-gradient(90deg, #800020 0%, #a31535 100%);
+            color: #ffffff;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(163, 21, 53, 0.2);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 5px 25px rgba(163, 21, 53, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        /* Кнопки з контуром */
+        .btn-outline {
+            border: 1px solid #800020;
+            color: #ffb3c6;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background-color: rgba(128, 0, 32, 0.2);
+            border-color: #a31535;
+        }
+
+        /* Тонкі лінії та блоки */
+        .border-line { border-color: rgba(163, 21, 53, 0.25); }
+        .planet-block {
+            border: 1px solid rgba(163, 21, 53, 0.25);
+            background-color: #0a0202;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Світіння на фоні */
+        .glow-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(163, 21, 53, 0.12) 0%, rgba(5, 1, 1, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Валідація форм */
+        .input-error { border-color: #dc2626 !important; background-color: rgba(220, 38, 38, 0.05) !important; }
+        .error-message { display: none; color: #dc2626; font-size: 0.7rem; margin-top: 4px; text-transform: uppercase; }
+        .input-error + .error-message { display: block; }
+    </style>
+</head>
+<body class="antialiased relative selection:bg-garnetLight selection:text-white">
+
+    <!-- ================== ФОНОВЕ ФОТО ЗІ ЗЕРНОМ ТА ПРИГЛУШЕНИМ ЗЕЛЕНИМ ВІДТІНКОМ ================== -->
+    <!-- 1. Базовий приглушений зелений колір -->
+    <div class="fixed inset-0 w-full h-full bg-[#1b261f] z-[-4] pointer-events-none"></div>
+    <!-- 2. Ваше фото (закиньте файл bg.jpg у папку). 50% видимості, зливається із зеленим фоном -->
+    <div class="fixed inset-0 w-full h-full bg-[url('bg.jpg')] bg-cover bg-center bg-no-repeat z-[-3] opacity-50 mix-blend-luminosity pointer-events-none"></div>
+    <!-- 3. Темний градієнт, щоб текст на сайті гарантовано читався ідеально -->
+    <div class="fixed inset-0 w-full h-full bg-gradient-to-b from-[#050101]/50 via-[#0a0202]/85 to-[#050101] z-[-2] pointer-events-none"></div>
+    <!-- ========================================================================================== -->
+
+    <!-- Декоративне світіння -->
+    <div class="glow-orb top-[10%] left-[50%] -translate-x-1/2"></div>
+    <div class="glow-orb top-[60%] -left-[20%]"></div>
+    <div class="glow-orb top-[120%] -right-[20%]"></div>
+
+    <!-- 1. ГОЛОВНИЙ ЕКРАН (HERO) -->
+    <header class="min-h-[85vh] flex flex-col justify-center items-center text-center px-4 relative">
+        <div class="max-w-4xl mx-auto z-10 flex flex-col items-center mt-12">
+            <div class="text-[10px] md:text-xs tracking-[0.25em] uppercase text-textMuted mb-6 border border-garnet/50 bg-garnet/10 px-6 py-2">
+                Вища Планетарна Магія
+            </div>
+            <!-- ГОЛОВНИЙ ЗАГОЛОВОК -->
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-semibold leading-tight mb-8 drop-shadow-lg">
+                Магія поза межами <br> 
+                <span class="italic bg-gradient-to-r from-[#590016] via-[#a31535] to-[#ffb3c6] text-transparent bg-clip-text">світлого та темного</span>
+            </h1>
+            <p class="text-xs md:text-sm font-light text-textMuted mb-12 max-w-2xl leading-loose tracking-wide">
+                Я — Влада. Відаюча, Жриця Гекати. Працюю через власний потік та фундаментальні закони світобудови, щоб змінити вашу реальність та відкрити справжню силу.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
+                <a href="#rituals" class="btn-primary font-bold py-4 px-10 text-[11px] uppercase tracking-[0.15em] text-center rounded-sm">
+                    Ознайомитись з ритуалами
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Декоративна полоса символів (КЛІКАБЕЛЬНА) -->
+    <div class="w-full border-y border-line py-6 flex justify-center flex-wrap gap-8 md:gap-16 text-2xl md:text-3xl text-textHighlight font-serif opacity-80">
+        <a href="#sun" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Сонце">&#9737;</a>
+        <a href="#moon" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Місяць">&#9789;</a>
+        <a href="#mercury" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Меркурій">&#9791;</a>
+        <a href="#venus" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Венера">&#9792;</a>
+        <a href="#mars" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Марс">&#9794;</a>
+        <a href="#jupiter" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Юпітер">&#9795;</a>
+        <a href="#saturn" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Сатурн">&#9796;</a>
+    </div>
+
+    <!-- 2. ПРО МЕНЕ -->
+    <section class="py-24 px-4 relative">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="relative p-4 border border-line bg-bgCard">
+                <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?q=80&w=800&auto=format&fit=crop" alt="Жриця Гекати" class="w-full h-[500px] object-cover grayscale-[20%] contrast-125 border border-line">
+                <div class="absolute -top-3 -left-3 text-textHighlight text-xl font-serif">✦</div>
+                <div class="absolute -bottom-3 -right-3 text-textHighlight text-xl font-serif">✦</div>
+            </div>
+            
+            <div class="space-y-8">
+                <div class="text-[10px] tracking-[0.2em] uppercase text-textMuted">Шлях Жриці</div>
+                <h2 class="text-3xl md:text-4xl font-serif font-medium text-white">Моя парадигма</h2>
+                
+                <p class="text-textMuted font-light leading-loose text-sm">
+                    Одне з моїх «облич» — відаюча (відьма). Я ритуально працюю переважно через власний потік як жриця Гекати, а також у традиціях язичництва. Як і Геката, я багатолика та необмежена, не прив’язую себе до однієї системи.
+                </p>
+                
+                <div class="pl-6 border-l-2 border-garnetLight py-2 bg-garnet/5">
+                    <p class="text-xl md:text-2xl font-serif text-textHighlight italic leading-relaxed">
+                        «Я — дворучник. Я не працюю в парадигмі поділу на світле і темне. Обидва полюси є частиною цілісності».
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ПРАВИЛО: ДІАГНОСТИКА -->
+    <section class="py-16 px-4 relative">
+        <div class="max-w-4xl mx-auto planet-block p-10 md:p-16 text-center relative overflow-hidden">
+            <div class="text-4xl font-serif text-textHighlight mb-6 opacity-30">&#128065;</div>
+            <h2 class="text-2xl md:text-3xl font-serif font-medium mb-6 text-white">Фундамент будь-якої роботи</h2>
+            <p class="text-textMuted font-light mb-12 max-w-2xl mx-auto leading-loose text-sm">
+                Магічна робота вимагає хірургічної точності. Саме тому перед кожним ритуалом обов'язково проводиться діагностична сесія. Ми детально розберемо вашу ситуацію, визначимо першопричину запиту та підберемо інструмент.
+            </p>
+            
+            <!-- Блок із гранатово-рожевою тінню (світінням) -->
+            <div class="relative inline-block w-full max-w-2xl mx-auto mt-4">
+                <!-- Ефект гранатово-рожевого світіння/тіні під блоком -->
+                <div class="absolute inset-0 bg-gradient-to-r from-[#800020] via-[#a31535] to-[#ffb3c6] blur-[50px] opacity-30 rounded-[100%] pointer-events-none"></div>
+                
+                <!-- Сам текстовий блок -->
+                <div class="relative border-t border-b border-[rgba(255,179,198,0.25)] py-8 px-4 bg-gradient-to-r from-transparent via-[rgba(255,179,198,0.03)] to-transparent">
+                    <span class="block text-[10px] text-textHighlight tracking-[0.2em] uppercase mb-4 drop-shadow-md">Важливо</span>
+                    <p class="text-lg md:text-2xl font-serif font-medium text-white uppercase tracking-widest leading-relaxed drop-shadow-[0_0_12px_rgba(255,179,198,0.3)]">
+                        Діагностична сесія вже входить у вартість кожного ритуалу
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 4. КАТАЛОГ РИТУАЛІВ -->
+    <section id="rituals" class="py-24 px-4 relative">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="text-center mb-20">
+                <div class="text-[10px] tracking-[0.2em] uppercase text-textMuted mb-4">Каталог послуг</div>
+                <h2 class="text-4xl md:text-5xl font-serif font-medium text-white mb-6">Планетарні Ритуали</h2>
+                <p class="text-sm font-light text-textMuted max-w-2xl mx-auto leading-loose">Клікайте на планети в меню вище або гортайте вниз, щоб обрати сферу.</p>
+            </div>
+
+            <div class="space-y-16">
+                
+                <!-- СОНЦЕ -->
+                <div id="sun" class="planet-block p-8 md:p-12 relative scroll-mt-12">
+                    <div class="flex flex-col items-center text-center border-b border-line pb-8 mb-8">
+                        <div class="text-5xl font-serif text-textHighlight mb-4">&#9737;</div>
+                        <h3 class="text-3xl font-serif font-medium text-white uppercase tracking-widest mb-2">Сонце</h3>
+                        <p class="text-[10px] text-textMuted tracking-[0.2em] uppercase">Успіх • Проявленість • Енергія</p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Проявленість»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Посилення особистого бренду, харизми та впізнаваності. Ідеально для тих, хто хоче заявити про себе світові.</p>
+                            <div class="flex flex-col gap-4 mt-auto">
+                                <span class="text-xl font-medium text-white">4 500 грн</span>
+                                <button class="open-modal btn-primary w-full py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Проявленість»" data-price="4500" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Відкриття доріг до успіху»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Усунення застарілих перешкод на шляху до вашої реалізації. Пробивання невидимої «стелі».</p>
+                            <div class="flex flex-col gap-4 mt-auto">
+                                <span class="text-xl font-medium text-white">5 000 грн</span>
+                                <button class="open-modal btn-primary w-full py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Відкриття доріг»" data-price="5000" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МІСЯЦЬ -->
+                <div id="moon" class="planet-block p-8 md:p-12 relative scroll-mt-12">
+                    <div class="flex flex-col items-center text-center border-b border-line pb-8 mb-8">
+                        <div class="text-5xl font-serif text-textHighlight mb-4">&#9789;</div>
+                        <h3 class="text-3xl font-serif font-medium text-white uppercase tracking-widest mb-2">Місяць</h3>
+                        <p class="text-[10px] text-textMuted tracking-[0.2em] uppercase">Очищення • Баланс • Емоції</p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Чакральне очищення»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Глибоке енергетичне очищення центрів, відновлення балансу та внутрішньої гармонії.</p>
+                            <div class="flex flex-col gap-4 mt-auto">
+                                <span class="text-xl font-medium text-white">3 500 грн</span>
+                                <button class="open-modal btn-primary w-full py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Чакральне очищення»" data-price="3500" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Зняття негативу»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Зняття побутового негативу, пристріту та легких деструктивних програм. Відновлення поля.</p>
+                            <div class="flex flex-col gap-4 mt-auto">
+                                <span class="text-xl font-medium text-white">4 000 грн</span>
+                                <button class="open-modal btn-primary w-full py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Зняття негативу»" data-price="4000" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МЕРКУРІЙ -->
+                <div id="mercury" class="planet-block p-8 md:p-12 relative scroll-mt-12">
+                    <div class="flex flex-col items-center text-center border-b border-line pb-8 mb-8">
+                        <div class="text-5xl font-serif text-textHighlight mb-4">&#9791;</div>
+                        <h3 class="text-3xl font-serif font-medium text-white uppercase tracking-widest mb-2">Меркурій</h3>
+                        <p class="text-[10px] text-textMuted tracking-[0.2em] uppercase">Комунікація • Інформація • Можливості</p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Успішна угода»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Магічна підтримка у переговорах, підписанні контрактів, продажу чи купівлі нерухомості/авто.</p>
+                            <div class="flex flex-col gap-4 mt-auto">
+                                <span class="text-xl font-medium text-white">4 000 грн</span>
+                                <button class="open-modal btn-primary w-full py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Успішна угода»" data-price="4000" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Нові можливості»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Залучення потрібних людей, інформації та ситуацій для швидкого прориву у справах.</p>
+                            <div class="flex flex-col gap-4 mt-auto">
+                                <span class="text-xl font-medium text-white">4 500 грн</span>
+                                <button class="open-modal btn-primary w-full py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Нові можливості»" data-price="4500" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ВЕНЕРА -->
+                <div id="venus" class="planet-block p-8 md:p-12 relative scroll-mt-12">
+                    <div class="flex flex-col items-center text-center border-b border-line pb-8 mb-8">
+                        <div class="text-5xl font-serif text-textHighlight mb-4">&#9792;</div>
+                        <h3 class="text-3xl font-serif font-medium text-white uppercase tracking-widest mb-2">Венера</h3>
+                        <p class="text-[10px] text-textMuted tracking-[0.2em] uppercase">Кохання • Стосунки • Магнетизм</p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Чистка любовного каналу»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Очищення від минулих токсичних зв’язків і блоків. Опціонально — залучення партнера.</p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-xl font-medium text-white">5 500 грн</span>
+                                <button class="open-modal btn-primary px-6 py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Чистка любовного каналу»" data-price="5500" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Гармонізація стосунків»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Зняття напруги в парі, відновлення втраченої пристрасті, розуміння та близькості.</p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-xl font-medium text-white">5 000 грн</span>
+                                <button class="open-modal btn-primary px-6 py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Гармонізація стосунків»" data-price="5000" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col border border-line p-6 bg-bgDark lg:col-span-2">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Сексуальний магнетизм»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Розкриття природної внутрішньої привабливості. Вплив на те, як вас сприймають оточуючі на інстинктивному рівні.</p>
+                            <div class="flex items-center justify-between mt-auto lg:w-1/2">
+                                <span class="text-xl font-medium text-white">4 500 грн</span>
+                                <button class="open-modal btn-primary px-6 py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Сексуальний магнетизм»" data-price="4500" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МАРС -->
+                <div id="mars" class="planet-block p-8 md:p-12 relative border-l-2 border-l-garnetLight scroll-mt-12">
+                    <div class="flex flex-col items-center text-center border-b border-line pb-8 mb-8">
+                        <div class="text-5xl font-serif text-textHighlight mb-4">&#9794;</div>
+                        <h3 class="text-3xl font-serif font-medium text-white uppercase tracking-widest mb-2">Марс</h3>
+                        <p class="text-[10px] text-textMuted tracking-[0.2em] uppercase">Сила • Захист • Очищення</p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Агресивний захист»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Постановка бойового захисту. Будь-який напад на вас автоматично відбивається і жорстко б'є у відповідь.</p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-xl font-medium text-white">6 000 грн</span>
+                                <button class="open-modal btn-primary px-6 py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Агресивний захист»" data-price="6000" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Відсікання зв’язків»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Хірургічний і жорсткий обрив енергетичних прив'язок до токсичних людей, колишніх партнерів або ворогів.</p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-xl font-medium text-white">4 500 грн</span>
+                                <button class="open-modal btn-primary px-6 py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Відсікання зв’язків»" data-price="4500" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ЮПІТЕР -->
+                <div id="jupiter" class="planet-block p-8 md:p-12 relative scroll-mt-12">
+                    <div class="flex flex-col items-center text-center border-b border-line pb-8 mb-8">
+                        <div class="text-5xl font-serif text-textHighlight mb-4">&#9795;</div>
+                        <h3 class="text-3xl font-serif font-medium text-white uppercase tracking-widest mb-2">Юпітер</h3>
+                        <p class="text-[10px] text-textMuted tracking-[0.2em] uppercase">Достаток • Розширення • Масштаб</p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Великі можливості»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Ритуал на масштаб, вихід на новий рівень у соціумі, кар'єрі або бізнесі. Залучення удачі.</p>
+                            <div class="flex flex-col gap-4 mt-auto">
+                                <span class="text-xl font-medium text-white">6 000 грн</span>
+                                <button class="open-modal btn-primary w-full py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Великі можливості»" data-price="6000" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Фінансове розширення»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Зняття фінансових блоків, розширення грошового каналу та залучення постійного прибутку.</p>
+                            <div class="flex flex-col gap-4 mt-auto">
+                                <span class="text-xl font-medium text-white">6 500 грн</span>
+                                <button class="open-modal btn-primary w-full py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Фінансове розширення»" data-price="6500" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- САТУРН -->
+                <div id="saturn" class="planet-block p-8 md:p-12 relative border-l-2 border-l-gray-600 scroll-mt-12">
+                    <div class="flex flex-col items-center text-center border-b border-line pb-8 mb-8">
+                        <div class="text-5xl font-serif text-textHighlight mb-4">&#9796;</div>
+                        <h3 class="text-3xl font-serif font-medium text-white uppercase tracking-widest mb-2">Сатурн</h3>
+                        <p class="text-[10px] text-textMuted tracking-[0.2em] uppercase">Карма • Опора • Закон</p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Вихід із кризи»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Екстрена стабілізація ситуації, коли здається, що все руйнується. Створення жорсткої внутрішньої та зовнішньої опори.</p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-xl font-medium text-white">7 000 грн</span>
+                                <button class="open-modal btn-primary px-6 py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Вихід із кризи»" data-price="7000" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col border border-line p-6 bg-bgDark">
+                            <div class="mb-5">
+                                <span class="text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-textMuted block mb-2">Ритуал</span>
+                                <h4 class="text-2xl md:text-3xl font-serif font-semibold text-white leading-snug drop-shadow-md">«Завершення кармічного циклу»</h4>
+                            </div>
+                            <p class="text-xs font-light text-textMuted leading-loose mb-8 flex-grow">Дуже серйозний ритуал. Розв'язання кармічних вузлів, через які ви ходите по колу. Потребує максимальної відповідальності.</p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-xl font-medium text-white">9 000 грн</span>
+                                <button class="open-modal btn-primary px-6 py-3 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Ритуал «Завершення кармічного циклу»" data-price="9000" data-link="LINK">Оформити</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ОКРЕМІ ДІАГНОСТИКИ ТА ЧЕНЕЛІНГ -->
+    <section class="py-24 px-4 relative border-t border-line bg-bgCard">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-medium mb-4 text-white">Окрема діагностика</h2>
+                <p class="text-sm font-light text-textMuted max-w-xl mx-auto leading-loose">Якщо ви ще не готові до масштабного ритуалу, почніть із точкового глибокого аналізу.</p>
+            </div>
+            
+            <!-- Блоки діагностик -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="border border-garnetLight/40 bg-gradient-to-b from-[#160505] to-bgDark p-8 rounded-xl shadow-lg shadow-garnet/10 flex flex-col justify-between hover:shadow-garnet/30 transition-all">
+                    <div>
+                        <h3 class="text-2xl font-serif font-semibold text-white drop-shadow-md mb-4">Діагностика негативу</h3>
+                        <p class="text-xs font-light text-textMuted leading-loose mb-8">
+                            Визначення наявності та характеру деструктивних магічних впливів на вас (пристріт, порча, крадники).
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-line pt-6">
+                        <div class="text-xl font-medium text-white">1 500 грн</div>
+                        <button class="open-modal btn-outline px-6 py-2 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Діагностика негативу" data-price="1500" data-link="LINK">Придбати</button>
+                    </div>
+                </div>
+                
+                <div class="border border-garnetLight/40 bg-gradient-to-b from-[#160505] to-bgDark p-8 rounded-xl shadow-lg shadow-garnet/10 flex flex-col justify-between hover:shadow-garnet/30 transition-all">
+                    <div>
+                        <h3 class="text-2xl font-serif font-semibold text-white drop-shadow-md mb-4">Діагностика здібностей</h3>
+                        <p class="text-xs font-light text-textMuted leading-loose mb-8">
+                            Аналіз ваших природних магічних та духовних здібностей. В якому напрямку вам варто розвиватися.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-line pt-6">
+                        <div class="text-xl font-medium text-white">2 000 грн</div>
+                        <button class="open-modal btn-outline px-6 py-2 text-[10px] uppercase tracking-widest font-bold rounded-md" data-title="Діагностика здібностей" data-price="2000" data-link="LINK">Придбати</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ЧЕНЕЛІНГ РОЗБІР -->
+            <div class="border-2 border-garnetLight bg-gradient-to-br from-[#2a0508] via-bgDark to-bgDark relative rounded-2xl overflow-hidden p-8 md:p-12 text-center shadow-[0_0_40px_rgba(163,21,53,0.3)]">
+                <div class="absolute inset-0 bg-garnetLight blur-[80px] opacity-10"></div>
+                
+                <div class="relative z-10">
+                    <div class="text-[10px] text-textHighlight tracking-[0.2em] uppercase mb-4">Ексклюзивний формат</div>
+                    
+                    <h3 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 uppercase drop-shadow-lg tracking-wider">Ченелінг Розбір</h3>
+                    
+                    <p class="text-sm font-light text-textMuted max-w-2xl mx-auto leading-loose mb-8">
+                        Глибоке зчитування вашого поля та інформації з тонкого плану. Відповіді на ключові питання вашого життя через прямий потік та взаємодію з вищими силами.
+                    </p>
+                    
+                    <a href="https://vladanslava.vercel.app" class="inline-block btn-primary px-10 py-4 text-[12px] uppercase tracking-widest font-bold rounded-xl">
+                        Дізнатися детальніше
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="py-12 text-center border-t border-line text-textMuted text-[10px] tracking-[0.2em] uppercase bg-bgDark">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center px-4 gap-6">
+            <p>© 2026 | ВЛАДА — ЖРИЦЯ ГЕКАТИ</p>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-textHighlight transition">Instagram</a>
+                <a href="#" class="hover:text-textHighlight transition">Telegram</a>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-textHighlight transition">Договір оферти</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- POP-UP МОДАЛЬНЕ ВІКНО ОФОРМЛЕННЯ -->
+    <div id="payment-modal" class="fixed inset-0 z-[200] bg-black/90 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="relative planet-block p-8 md:p-10 w-full max-w-md transform transition-all shadow-[0_0_40px_rgba(163,21,53,0.3)] rounded-xl">
+            <button id="close-modal" class="absolute top-4 right-6 text-textMuted hover:text-textHighlight text-3xl font-light focus:outline-none">&times;</button>
+            
+            <div class="mb-8 border-b border-line pb-6 text-center">
+                <p class="text-[9px] text-textMuted uppercase tracking-[0.2em] mb-3">Оформлення замовлення</p>
+                <h3 id="modal-title" class="text-2xl font-serif font-semibold text-white mb-3 leading-snug drop-shadow-md">Назва ритуалу</h3>
+                <div class="inline-block border border-garnet/50 bg-garnet/10 px-4 py-1 rounded">
+                    <span class="text-[10px] text-textMuted uppercase tracking-widest mr-2">Сума:</span>
+                    <span id="modal-price" class="text-sm font-medium text-white">0 грн</span>
+                </div>
+            </div>
+            
+            <form id="orderForm" class="space-y-5" novalidate>
+                <input type="hidden" id="pop-product" name="product" value="">
+                <input type="hidden" id="pop-price" name="price" value="">
+                <input type="hidden" id="pop-link" name="link" value="">
+
+                <div>
+                    <input type="text" id="pop-name" placeholder="Ваше ім'я" class="w-full bg-bgDark border border-line px-4 py-3 rounded text-white text-xs tracking-wide focus:outline-none focus:border-garnetLight transition">
+                    <span class="error-message">Введіть ваше ім'я</span>
+                </div>
+                
+                <div>
+                    <input type="tel" id="pop-phone" placeholder="Номер телефону (+380...)" class="w-full bg-bgDark border border-line px-4 py-3 rounded text-white text-xs tracking-wide focus:outline-none focus:border-garnetLight transition">
+                    <span class="error-message">Введіть коректний номер</span>
+                </div>
+
+                <div>
+                    <input type="text" id="pop-telegram" placeholder="Ваш Telegram (@username)" class="w-full bg-bgDark border border-line px-4 py-3 rounded text-white text-xs tracking-wide focus:outline-none focus:border-garnetLight transition">
+                    <span class="error-message">Обов'язкове поле</span>
+                </div>
+
+                <div>
+                    <input type="email" id="pop-email" placeholder="Email" class="w-full bg-bgDark border border-line px-4 py-3 rounded text-white text-xs tracking-wide focus:outline-none focus:border-garnetLight transition">
+                    <span class="error-message">Введіть коректний email</span>
+                </div>
+                
+                <div class="pt-4">
+                    <button type="submit" class="w-full btn-primary py-4 rounded-md text-[11px] uppercase tracking-[0.2em] font-bold">
+                        Перейти до оплати
+                    </button>
+                    <p class="text-center text-[9px] text-textMuted mt-4 tracking-widest leading-relaxed">
+                        Після оплати ви будете перенаправлені на сторінку підтвердження.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ЛОГІКА -->
+    <script>
+        const modal = document.getElementById('payment-modal');
+        const closeBtn = document.getElementById('close-modal');
+        const orderForm = document.getElementById('orderForm');
+        
+        const mTitle = document.getElementById('modal-title');
+        const mPrice = document.getElementById('modal-price');
+        const iProduct = document.getElementById('pop-product');
+        const iPrice = document.getElementById('pop-price');
+        const iLink = document.getElementById('pop-link');
+
+        // Відкриття модалки
+        document.querySelectorAll('.open-modal').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const title = btn.getAttribute('data-title');
+                const price = btn.getAttribute('data-price');
+                const link = btn.getAttribute('data-link');
+
+                mTitle.innerText = title;
+                mPrice.innerText = price + ' грн';
+                iProduct.value = title;
+                iPrice.value = price;
+                iLink.value = link;
+
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Закриття
+        const closeModal = () => {
+            modal.classList.add('opacity-0');
+            setTimeout(() => { 
+                modal.classList.add('hidden'); 
+                document.body.style.overflow = ''; 
+            }, 300);
+        };
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+        // UTM Мітки
+        function getUTMs() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                source: params.get('utm_source') || '',
+                medium: params.get('utm_medium') || '',
+                campaign: params.get('utm_campaign') || ''
+            };
+        }
+
+        // Відправка
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            const name = document.getElementById('pop-name');
+            const phone = document.getElementById('pop-phone');
+            const tg = document.getElementById('pop-telegram');
+            const email = document.getElementById('pop-email');
+            const submitBtn = orderForm.querySelector('button[type="submit"]');
+
+            const toggleError = (input, show) => {
+                if(show) { input.classList.add('input-error'); input.classList.remove('focus:border-garnetLight'); isValid = false; }
+                else { input.classList.remove('input-error'); input.classList.add('focus:border-garnetLight'); }
+            };
+
+            toggleError(name, name.value.trim().length < 2);
+            toggleError(tg, tg.value.trim().length < 2);
+            toggleError(phone, !/^\+?[0-9\s\-()]{9,15}$/.test(phone.value.trim().replace(/\s+/g, '')));
+            toggleError(email, !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
+
+            if (isValid) {
+                submitBtn.innerHTML = 'Обробка...';
+                submitBtn.disabled = true;
+
+                // ❗️ ТУТ ВАШ GOOGLE SCRIPT URL
+                const googleScriptURL = 'https://script.google.com/macros/s/ВАШ_КОД/exec'; 
+                const paymentURL = iLink.value;
+
+                const formData = new FormData();
+                formData.append('name', name.value.trim());
+                formData.append('phone', phone.value.trim());
+                formData.append('telegram', tg.value.trim()); 
+                formData.append('email', email.value.trim()); 
+                formData.append('product', iProduct.value); 
+                formData.append('price', iPrice.value); 
+                
+                const utms = getUTMs();
+                formData.append('utm_source', utms.source);
+                formData.append('utm_medium', utms.medium);
+                formData.append('utm_campaign', utms.campaign);
+
+                fetch(googleScriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+                .then(() => { window.location.href = paymentURL; })
+                .catch(() => { window.location.href = paymentURL; });
+            }
+        });
+
+        // Прибирання помилок
+        ['pop-name', 'pop-phone', 'pop-telegram', 'pop-email'].forEach(id => {
+            document.getElementById(id).addEventListener('input', function() {
+                this.classList.remove('input-error');
+                this.classList.add('focus:border-garnetLight');
+            });
+        });
+    </script>
+</body>
+</html>
