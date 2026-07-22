@@ -91,8 +91,9 @@
     <div class="glow-orb top-[120%] -right-[20%]"></div>
 
     <!-- 1. ГОЛОВНИЙ ЕКРАН (HERO) -->
-    <header class="min-h-[85vh] flex flex-col justify-center items-center text-center px-4 relative">
-        <div class="max-w-4xl mx-auto z-10 flex flex-col items-center mt-12">
+    <!-- Змінено min-h-[85vh] на min-h-[60vh] для мобільних, щоб іконки були одразу під кнопкою -->
+    <header class="min-h-[60vh] md:min-h-[85vh] flex flex-col justify-center items-center text-center px-4 relative pt-12 md:pt-0 pb-6 md:pb-0">
+        <div class="max-w-4xl mx-auto z-10 flex flex-col items-center">
             <div class="text-[10px] md:text-xs tracking-[0.25em] uppercase text-textMuted mb-6 border border-garnet/50 bg-garnet/10 px-6 py-2">
                 Вища Планетарна Магія
             </div>
@@ -100,7 +101,7 @@
                 Магія поза межами <br> 
                 <span class="italic text-textHighlight font-light tracking-wide">світлого та темного</span>
             </h1>
-            <p class="text-xs md:text-sm font-light text-textMuted mb-12 max-w-2xl leading-loose tracking-wide">
+            <p class="text-xs md:text-sm font-light text-textMuted mb-8 md:mb-12 max-w-2xl leading-loose tracking-wide">
                 Я — Влада. Відаюча, Жриця Гекати. Працюю через власний потік та фундаментальні закони світобудови, щоб змінити вашу реальність та відкрити справжню силу.
             </p>
             
@@ -112,23 +113,24 @@
         </div>
     </header>
 
-    <!-- Декоративна полоса символів (КЛІКАБЕЛЬНА) -->
-    <div class="w-full border-y border-line py-6 flex justify-center flex-wrap gap-8 md:gap-16 text-2xl md:text-3xl text-textHighlight font-serif opacity-80">
-        <a href="#sun" class="hover:text-yellow-500 hover:scale-125 transition-all duration-300 cursor-pointer" title="Сонце">&#9737;</a>
-        <a href="#moon" class="hover:text-slate-300 hover:scale-125 transition-all duration-300 cursor-pointer" title="Місяць">&#9789;</a>
-        <a href="#mercury" class="hover:text-amber-500 hover:scale-125 transition-all duration-300 cursor-pointer" title="Меркурій">&#9791;</a>
-        <a href="#venus" class="hover:text-teal-500 hover:scale-125 transition-all duration-300 cursor-pointer" title="Венера">&#9792;</a>
-        <a href="#mars" class="hover:text-red-600 hover:scale-125 transition-all duration-300 cursor-pointer" title="Марс">&#9794;</a>
-        <a href="#jupiter" class="hover:text-indigo-400 hover:scale-125 transition-all duration-300 cursor-pointer" title="Юпітер">&#9795;</a>
-        <a href="#saturn" class="hover:text-violet-500 hover:scale-125 transition-all duration-300 cursor-pointer" title="Сатурн">&#9796;</a>
+    <!-- Декоративна полоса символів (КЛІКАБЕЛЬНА, ВІДРАЗУ ПІД КНОПКОЮ) -->
+    <div class="w-full border-y border-line py-5 md:py-6 flex justify-center flex-wrap gap-5 md:gap-16 text-2xl md:text-3xl text-textHighlight font-serif opacity-80">
+        <a href="#sun" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Сонце">&#9737;</a>
+        <a href="#moon" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Місяць">&#9789;</a>
+        <a href="#mercury" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Меркурій">&#9791;</a>
+        <a href="#venus" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Венера">&#9792;</a>
+        <a href="#mars" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Марс">&#9794;</a>
+        <a href="#jupiter" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Юпітер">&#9795;</a>
+        <a href="#saturn" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Сатурн">&#9796;</a>
     </div>
 
-    <!-- 2. ПРО МЕНЕ -->
+    <!-- 2. ПРО МЕНЕ (Квадратне, мінімальне фото) -->
     <section class="py-16 md:py-24 px-4 relative">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 md:gap-16 items-center">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-center">
             
-            <div class="relative p-2 border border-line bg-bgCard w-full max-w-[260px] md:max-w-[320px] mx-auto md:mx-0 shrink-0">
-                <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?q=80&w=800&auto=format&fit=crop" alt="Жриця Гекати" class="w-full h-[320px] md:h-[400px] object-cover grayscale-[20%] contrast-125 border border-line">
+            <!-- АКУРАТНЕ КВАДРАТНЕ ФОТО -->
+            <div class="relative p-2 border border-line bg-bgCard w-full max-w-[180px] md:max-w-[280px] mx-auto md:mx-0 shrink-0">
+                <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?q=80&w=800&auto=format&fit=crop" alt="Жриця Гекати" class="w-full aspect-square object-cover grayscale-[20%] contrast-125 border border-line">
                 <div class="absolute -top-3 -left-3 text-textHighlight text-xl font-serif">✦</div>
                 <div class="absolute -bottom-3 -right-3 text-textHighlight text-xl font-serif">✦</div>
             </div>
@@ -172,7 +174,7 @@
         </div>
     </section>
 
-    <!-- 4. КАТАЛОГ РИТУАЛІВ (ВСІ КАРТКИ В ОДНОМУ ГРАНАТОВОМУ СТИЛІ) -->
+    <!-- 4. КАТАЛОГ РИТУАЛІВ -->
     <section id="rituals" class="py-16 md:py-24 px-4 relative">
         <div class="max-w-5xl mx-auto">
             
@@ -182,25 +184,24 @@
                 <p class="text-sm font-light text-textMuted max-w-2xl mx-auto leading-loose">Гортайте вниз, щоб обрати сферу та ритуал.</p>
             </div>
 
-            <div class="flex flex-col gap-12 md:gap-16">
+            <div class="space-y-24">
                 
-                <!-- СОНЦЕ -->
+                <!-- СОНЦЕ (Тепер біле, як і всі інші) -->
                 <div id="sun" class="scroll-mt-24">
-                    <div class="flex flex-col items-center text-center mb-10 relative">
-                        <div class="absolute inset-0 bg-yellow-500/10 blur-[60px] rounded-full w-32 h-32 mx-auto"></div>
-                        <div class="text-5xl font-serif text-yellow-500 mb-4 drop-shadow-md relative z-10">&#9737;</div>
-                        <h3 class="text-3xl font-serif font-medium text-yellow-500 uppercase tracking-widest mb-2 drop-shadow-md relative z-10">Сонце</h3>
-                        <p class="text-[10px] text-yellow-500/70 tracking-[0.2em] uppercase relative z-10">Успіх • Проявленість • Енергія</p>
+                    <div class="flex flex-col items-center text-center mb-10">
+                        <div class="text-5xl font-serif text-white mb-4 drop-shadow-md">&#9737;</div>
+                        <h3 class="text-3xl font-serif font-medium text-white uppercase tracking-widest mb-2 drop-shadow-md">Сонце</h3>
+                        <p class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">Успіх • Проявленість • Енергія</p>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#590016] to-[#3a0508] border border-garnetLight/60 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.35)] z-10 transform hover:-translate-y-1 transition-all">
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
                                     <div class="w-2 h-2 rounded-full bg-white"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textHighlight block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Проявленість</h4>
                                 </div>
                             </div>
@@ -217,33 +218,33 @@
                                     <div class="text-xl font-semibold text-white">4 500 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Проявленість" data-price="4500" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.5)] transition-all" data-title="Проявленість" data-price="4500" data-link="LINK">Оформити</button>
                         </div>
 
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#210206] to-[#0a0102] border border-garnet/40 rounded-[24px] p-8 flex flex-col relative shadow-lg hover:shadow-[0_0_20px_rgba(163,21,53,0.2)] transition-all">
                             <div class="flex items-center gap-4 mb-6">
-                                <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
-                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0 bg-white/5">
+                                    <div class="w-2 h-2 rounded-full bg-white/50"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textMuted block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Відкриття доріг</h4>
                                 </div>
                             </div>
-                            <hr class="border-white/20 mb-6">
-                            <p class="text-sm font-light text-white/90 mb-8 leading-relaxed flex-grow">
+                            <hr class="border-white/10 mb-6">
+                            <p class="text-sm font-light text-gray-400 mb-8 leading-relaxed flex-grow">
                                 Усунення застарілих перешкод на шляху до вашої реалізації. Пробивання невидимої «стелі».
                             </p>
                             <div class="flex items-center gap-4 mb-8">
-                                <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-black/20">
-                                    <span class="text-white/80 text-sm">₴</span>
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+                                    <span class="text-white/50 text-sm">₴</span>
                                 </div>
                                 <div>
-                                    <div class="text-[9px] text-white/60 uppercase tracking-widest mb-1">Вартість</div>
+                                    <div class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Вартість</div>
                                     <div class="text-xl font-semibold text-white">5 000 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Відкриття доріг" data-price="5000" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl btn-primary text-[10px] font-bold uppercase tracking-[0.2em]" data-title="Відкриття доріг" data-price="5000" data-link="LINK">Оформити</button>
                         </div>
                     </div>
                 </div>
@@ -257,13 +258,13 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#590016] to-[#3a0508] border border-garnetLight/60 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.35)] z-10 transform hover:-translate-y-1 transition-all">
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
                                     <div class="w-2 h-2 rounded-full bg-white"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textHighlight block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Чакральне очищення</h4>
                                 </div>
                             </div>
@@ -280,33 +281,33 @@
                                     <div class="text-xl font-semibold text-white">3 500 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Чакральне очищення" data-price="3500" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.5)] transition-all" data-title="Чакральне очищення" data-price="3500" data-link="LINK">Оформити</button>
                         </div>
 
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#210206] to-[#0a0102] border border-garnet/40 rounded-[24px] p-8 flex flex-col relative shadow-lg hover:shadow-[0_0_20px_rgba(163,21,53,0.2)] transition-all">
                             <div class="flex items-center gap-4 mb-6">
-                                <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
-                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0 bg-white/5">
+                                    <div class="w-2 h-2 rounded-full bg-white/50"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textMuted block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Зняття негативу</h4>
                                 </div>
                             </div>
-                            <hr class="border-white/20 mb-6">
-                            <p class="text-sm font-light text-white/90 mb-8 leading-relaxed flex-grow">
+                            <hr class="border-white/10 mb-6">
+                            <p class="text-sm font-light text-gray-400 mb-8 leading-relaxed flex-grow">
                                 Зняття побутового негативу, пристріту та легких деструктивних програм. Відновлення поля.
                             </p>
                             <div class="flex items-center gap-4 mb-8">
-                                <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-black/20">
-                                    <span class="text-white/80 text-sm">₴</span>
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+                                    <span class="text-white/50 text-sm">₴</span>
                                 </div>
                                 <div>
-                                    <div class="text-[9px] text-white/60 uppercase tracking-widest mb-1">Вартість</div>
+                                    <div class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Вартість</div>
                                     <div class="text-xl font-semibold text-white">4 000 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Зняття негативу" data-price="4000" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl btn-primary text-[10px] font-bold uppercase tracking-[0.2em]" data-title="Зняття негативу" data-price="4000" data-link="LINK">Оформити</button>
                         </div>
                     </div>
                 </div>
@@ -320,13 +321,13 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#590016] to-[#3a0508] border border-garnetLight/60 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.35)] z-10 transform hover:-translate-y-1 transition-all">
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
                                     <div class="w-2 h-2 rounded-full bg-white"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textHighlight block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Успішна угода</h4>
                                 </div>
                             </div>
@@ -343,33 +344,33 @@
                                     <div class="text-xl font-semibold text-white">4 000 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Успішна угода" data-price="4000" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.5)] transition-all" data-title="Успішна угода" data-price="4000" data-link="LINK">Оформити</button>
                         </div>
 
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#210206] to-[#0a0102] border border-garnet/40 rounded-[24px] p-8 flex flex-col relative shadow-lg hover:shadow-[0_0_20px_rgba(163,21,53,0.2)] transition-all">
                             <div class="flex items-center gap-4 mb-6">
-                                <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
-                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0 bg-white/5">
+                                    <div class="w-2 h-2 rounded-full bg-white/50"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textMuted block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Нові можливості</h4>
                                 </div>
                             </div>
-                            <hr class="border-white/20 mb-6">
-                            <p class="text-sm font-light text-white/90 mb-8 leading-relaxed flex-grow">
+                            <hr class="border-white/10 mb-6">
+                            <p class="text-sm font-light text-gray-400 mb-8 leading-relaxed flex-grow">
                                 Залучення потрібних людей, інформації та ситуацій для швидкого прориву у справах.
                             </p>
                             <div class="flex items-center gap-4 mb-8">
-                                <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-black/20">
-                                    <span class="text-white/80 text-sm">₴</span>
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+                                    <span class="text-white/50 text-sm">₴</span>
                                 </div>
                                 <div>
-                                    <div class="text-[9px] text-white/60 uppercase tracking-widest mb-1">Вартість</div>
+                                    <div class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Вартість</div>
                                     <div class="text-xl font-semibold text-white">4 500 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Нові можливості" data-price="4500" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl btn-primary text-[10px] font-bold uppercase tracking-[0.2em]" data-title="Нові можливості" data-price="4500" data-link="LINK">Оформити</button>
                         </div>
                     </div>
                 </div>
@@ -383,13 +384,13 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#590016] to-[#3a0508] border border-garnetLight/60 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.35)] z-10 transform hover:-translate-y-1 transition-all">
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
                                     <div class="w-2 h-2 rounded-full bg-white"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textHighlight block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Чистка каналу</h4>
                                 </div>
                             </div>
@@ -406,47 +407,47 @@
                                     <div class="text-xl font-semibold text-white">5 500 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Чистка любовного каналу" data-price="5500" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.5)] transition-all" data-title="Чистка любовного каналу" data-price="5500" data-link="LINK">Оформити</button>
                         </div>
 
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#210206] to-[#0a0102] border border-garnet/40 rounded-[24px] p-8 flex flex-col relative shadow-lg hover:shadow-[0_0_20px_rgba(163,21,53,0.2)] transition-all">
                             <div class="flex items-center gap-4 mb-6">
-                                <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
-                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0 bg-white/5">
+                                    <div class="w-2 h-2 rounded-full bg-white/50"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textMuted block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Гармонізація</h4>
                                 </div>
                             </div>
-                            <hr class="border-white/20 mb-6">
-                            <p class="text-sm font-light text-white/90 mb-8 leading-relaxed flex-grow">
+                            <hr class="border-white/10 mb-6">
+                            <p class="text-sm font-light text-gray-400 mb-8 leading-relaxed flex-grow">
                                 Зняття напруги в парі, відновлення втраченої пристрасті, розуміння та близькості.
                             </p>
                             <div class="flex items-center gap-4 mb-8">
-                                <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-black/20">
-                                    <span class="text-white/80 text-sm">₴</span>
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+                                    <span class="text-white/50 text-sm">₴</span>
                                 </div>
                                 <div>
-                                    <div class="text-[9px] text-white/60 uppercase tracking-widest mb-1">Вартість</div>
+                                    <div class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Вартість</div>
                                     <div class="text-xl font-semibold text-white">5 000 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Гармонізація стосунків" data-price="5000" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl btn-primary text-[10px] font-bold uppercase tracking-[0.2em]" data-title="Гармонізація стосунків" data-price="5000" data-link="LINK">Оформити</button>
                         </div>
 
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)] md:col-span-2">
+                        <div class="bg-gradient-to-br from-[#590016] to-[#3a0508] border border-garnetLight/60 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.35)] z-10 transform hover:-translate-y-1 transition-all md:col-span-2">
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
                                     <div class="w-2 h-2 rounded-full bg-white"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textHighlight block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Сексуальний магнетизм</h4>
                                 </div>
                             </div>
                             <hr class="border-white/20 mb-6">
-                            <p class="text-sm font-light text-white/90 mb-8 leading-relaxed flex-grow md:w-2/3">
+                            <p class="text-sm font-light text-white/90 mb-8 leading-relaxed flex-grow md:w-3/4">
                                 Розкриття природної внутрішньої привабливості. Вплив на те, як вас сприймають оточуючі на інстинктивному рівні.
                             </p>
                             <div class="flex items-center gap-4 mb-8 md:w-1/2">
@@ -458,7 +459,7 @@
                                     <div class="text-xl font-semibold text-white">4 500 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full md:w-1/2 py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Сексуальний магнетизм" data-price="4500" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full md:w-1/2 py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.5)] transition-all" data-title="Сексуальний магнетизм" data-price="4500" data-link="LINK">Оформити</button>
                         </div>
                     </div>
                 </div>
@@ -472,13 +473,13 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#590016] to-[#3a0508] border border-garnetLight/60 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.35)] z-10 transform hover:-translate-y-1 transition-all">
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
                                     <div class="w-2 h-2 rounded-full bg-white"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textHighlight block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Агресивний захист</h4>
                                 </div>
                             </div>
@@ -495,33 +496,33 @@
                                     <div class="text-xl font-semibold text-white">6 000 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Агресивний захист" data-price="6000" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.5)] transition-all" data-title="Агресивний захист" data-price="6000" data-link="LINK">Оформити</button>
                         </div>
 
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#210206] to-[#0a0102] border border-garnet/40 rounded-[24px] p-8 flex flex-col relative shadow-lg hover:shadow-[0_0_20px_rgba(163,21,53,0.2)] transition-all">
                             <div class="flex items-center gap-4 mb-6">
-                                <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
-                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0 bg-white/5">
+                                    <div class="w-2 h-2 rounded-full bg-white/50"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textMuted block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Відсікання зв’язків</h4>
                                 </div>
                             </div>
-                            <hr class="border-white/20 mb-6">
-                            <p class="text-sm font-light text-white/90 mb-8 leading-relaxed flex-grow">
+                            <hr class="border-white/10 mb-6">
+                            <p class="text-sm font-light text-gray-400 mb-8 leading-relaxed flex-grow">
                                 Хірургічний і жорсткий обрив енергетичних прив'язок до токсичних людей, колишніх партнерів або ворогів.
                             </p>
                             <div class="flex items-center gap-4 mb-8">
-                                <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-black/20">
-                                    <span class="text-white/80 text-sm">₴</span>
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+                                    <span class="text-white/50 text-sm">₴</span>
                                 </div>
                                 <div>
-                                    <div class="text-[9px] text-white/60 uppercase tracking-widest mb-1">Вартість</div>
+                                    <div class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Вартість</div>
                                     <div class="text-xl font-semibold text-white">4 500 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Відсікання зв’язків" data-price="4500" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl btn-primary text-[10px] font-bold uppercase tracking-[0.2em]" data-title="Відсікання зв’язків" data-price="4500" data-link="LINK">Оформити</button>
                         </div>
                     </div>
                 </div>
@@ -535,13 +536,13 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#590016] to-[#3a0508] border border-garnetLight/60 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.35)] z-10 transform hover:-translate-y-1 transition-all">
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
                                     <div class="w-2 h-2 rounded-full bg-white"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textHighlight block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Великі можливості</h4>
                                 </div>
                             </div>
@@ -558,33 +559,33 @@
                                     <div class="text-xl font-semibold text-white">6 000 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Великі можливості" data-price="6000" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.5)] transition-all" data-title="Великі можливості" data-price="6000" data-link="LINK">Оформити</button>
                         </div>
 
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#210206] to-[#0a0102] border border-garnet/40 rounded-[24px] p-8 flex flex-col relative shadow-lg hover:shadow-[0_0_20px_rgba(163,21,53,0.2)] transition-all">
                             <div class="flex items-center gap-4 mb-6">
-                                <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
-                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0 bg-white/5">
+                                    <div class="w-2 h-2 rounded-full bg-white/50"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textMuted block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Фінансовий ріст</h4>
                                 </div>
                             </div>
-                            <hr class="border-white/20 mb-6">
-                            <p class="text-sm font-light text-white/90 mb-8 leading-relaxed flex-grow">
+                            <hr class="border-white/10 mb-6">
+                            <p class="text-sm font-light text-gray-400 mb-8 leading-relaxed flex-grow">
                                 Зняття фінансових блоків, розширення грошового каналу та залучення постійного прибутку.
                             </p>
                             <div class="flex items-center gap-4 mb-8">
-                                <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-black/20">
-                                    <span class="text-white/80 text-sm">₴</span>
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+                                    <span class="text-white/50 text-sm">₴</span>
                                 </div>
                                 <div>
-                                    <div class="text-[9px] text-white/60 uppercase tracking-widest mb-1">Вартість</div>
+                                    <div class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Вартість</div>
                                     <div class="text-xl font-semibold text-white">6 500 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Фінансове розширення" data-price="6500" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl btn-primary text-[10px] font-bold uppercase tracking-[0.2em]" data-title="Фінансове розширення" data-price="6500" data-link="LINK">Оформити</button>
                         </div>
                     </div>
                 </div>
@@ -598,13 +599,13 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#590016] to-[#3a0508] border border-garnetLight/60 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.35)] z-10 transform hover:-translate-y-1 transition-all">
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
                                     <div class="w-2 h-2 rounded-full bg-white"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textHighlight block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Вихід із кризи</h4>
                                 </div>
                             </div>
@@ -621,33 +622,33 @@
                                     <div class="text-xl font-semibold text-white">7 000 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Вихід із кризи" data-price="7000" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.5)] transition-all" data-title="Вихід із кризи" data-price="7000" data-link="LINK">Оформити</button>
                         </div>
 
-                        <div class="bg-[#3a0508] border border-garnetLight/50 rounded-[24px] p-8 flex flex-col relative shadow-[0_0_30px_rgba(163,21,53,0.15)]">
+                        <div class="bg-gradient-to-br from-[#210206] to-[#0a0102] border border-garnet/40 rounded-[24px] p-8 flex flex-col relative shadow-lg hover:shadow-[0_0_20px_rgba(163,21,53,0.2)] transition-all">
                             <div class="flex items-center gap-4 mb-6">
-                                <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center shrink-0 bg-white/10">
-                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0 bg-white/5">
+                                    <div class="w-2 h-2 rounded-full bg-white/50"></div>
                                 </div>
                                 <div>
-                                    <span class="text-[9px] uppercase tracking-[0.2em] text-white/60 block mb-1">Ритуал</span>
+                                    <span class="text-[9px] uppercase tracking-[0.2em] text-textMuted block mb-1">Ритуал</span>
                                     <h4 class="text-xl md:text-2xl font-serif font-medium text-white tracking-wide">Завершення циклу</h4>
                                 </div>
                             </div>
-                            <hr class="border-white/20 mb-6">
-                            <p class="text-sm font-light text-white/90 mb-8 leading-relaxed flex-grow">
+                            <hr class="border-white/10 mb-6">
+                            <p class="text-sm font-light text-gray-400 mb-8 leading-relaxed flex-grow">
                                 Дуже серйозний ритуал. Розв'язання кармічних вузлів, через які ви ходите по колу.
                             </p>
                             <div class="flex items-center gap-4 mb-8">
-                                <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-black/20">
-                                    <span class="text-white/80 text-sm">₴</span>
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+                                    <span class="text-white/50 text-sm">₴</span>
                                 </div>
                                 <div>
-                                    <div class="text-[9px] text-white/60 uppercase tracking-widest mb-1">Вартість</div>
+                                    <div class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Вартість</div>
                                     <div class="text-xl font-semibold text-white">9 000 грн</div>
                                 </div>
                             </div>
-                            <button class="open-modal w-full py-4 rounded-xl bg-gradient-to-r from-[#800020] to-[#a31535] text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(163,21,53,0.4)] transition-all" data-title="Завершення кармічного циклу" data-price="9000" data-link="LINK">Оформити</button>
+                            <button class="open-modal w-full py-4 rounded-xl btn-primary text-[10px] font-bold uppercase tracking-[0.2em]" data-title="Завершення кармічного циклу" data-price="9000" data-link="LINK">Оформити</button>
                         </div>
                     </div>
                 </div>
@@ -713,14 +714,17 @@
 
     <!-- ФУТЕР -->
     <footer class="py-12 text-center border-t border-line text-textMuted text-[10px] tracking-[0.2em] uppercase bg-bgDark">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center px-4 gap-6">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center px-4">
             <p>© 2026 | ВЛАДА — ЖРИЦЯ ГЕКАТИ</p>
-            <div class="flex gap-8">
-                <a href="#" class="hover:text-textHighlight transition">Instagram</a>
-                <a href="#" class="hover:text-textHighlight transition">Telegram</a>
+            
+            <!-- ПОСИЛАННЯ ВСТАВЛЯТИ СЮДИ: -->
+            <div class="flex gap-8 mt-6 md:mt-0">
+                <a href="https://instagram.com/ваша_сторінка" target="_blank" class="hover:text-textHighlight transition">Instagram</a>
+                <a href="https://t.me/ваш_канал" target="_blank" class="hover:text-textHighlight transition">Telegram</a>
             </div>
-            <div class="flex gap-6">
-                <a href="#" class="hover:text-textHighlight transition">Договір оферти</a>
+            
+            <div class="flex gap-6 mt-6 md:mt-0">
+                <a href="oferta.html" target="_blank" class="hover:text-textHighlight transition">Договір оферти</a>
             </div>
         </div>
     </footer>
