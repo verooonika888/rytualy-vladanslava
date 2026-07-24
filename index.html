@@ -849,4 +849,136 @@
                 </div>
                 
                 <div>
-                    <input type="tel" id="pop-pho
+                    <input type="tel" id="pop-phone" placeholder="Номер телефону (+380...)" class="w-full bg-bgDark border border-line px-4 py-3.5 rounded-xl text-white text-sm tracking-wide focus:outline-none focus:border-garnetLight transition">
+                    <span class="error-message">Введіть коректний номер</span>
+                </div>
+
+                <div>
+                    <input type="text" id="pop-telegram" placeholder="Ваш Telegram (@username)" class="w-full bg-bgDark border border-line px-4 py-3.5 rounded-xl text-white text-sm tracking-wide focus:outline-none focus:border-garnetLight transition">
+                    <span class="error-message">Обов'язкове поле</span>
+                </div>
+
+                <div>
+                    <input type="email" id="pop-email" placeholder="Email" class="w-full bg-bgDark border border-line px-4 py-3.5 rounded-xl text-white text-sm tracking-wide focus:outline-none focus:border-garnetLight transition">
+                    <span class="error-message">Введіть коректний email</span>
+                </div>
+                
+                <div class="pt-4">
+                    <button type="submit" class="w-full btn-primary py-4 rounded-xl text-[11px] uppercase tracking-[0.2em] font-bold">
+                        Перейти до оплати
+                    </button>
+                    <p class="text-center text-[9px] text-textMuted mt-4 tracking-widest leading-relaxed">
+                        Після оплати ви будете перенаправлені на сторінку підтвердження.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ЛОГІКА -->
+    <script>
+        const modal = document.getElementById('payment-modal');
+        const closeBtn = document.getElementById('close-modal');
+        const orderForm = document.getElementById('orderForm');
+        
+        const mTitle = document.getElementById('modal-title');
+        const mPrice = document.getElementById('modal-price');
+        const iProduct = document.getElementById('pop-product');
+        const iPrice = document.getElementById('pop-price');
+        const iLink = document.getElementById('pop-link');
+
+        document.querySelectorAll('.open-modal').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const title = btn.getAttribute('data-title');
+                const price = btn.getAttribute('data-price');
+                const link = btn.getAttribute('data-link');
+
+                mTitle.innerText = title;
+                mPrice.innerText = price + ' €';
+                iProduct.value = title;
+                iPrice.value = price;
+                iLink.value = link;
+
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        const closeModal = () => {
+            modal.classList.add('opacity-0');
+            setTimeout(() => { 
+                modal.classList.add('hidden'); 
+                document.body.style.overflow = ''; 
+            }, 300);
+        };
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+        function getUTMs() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                source: params.get('utm_source') || '',
+                medium: params.get('utm_medium') || '',
+                campaign: params.get('utm_campaign') || ''
+            };
+        }
+
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            const name = document.getElementById('pop-name');
+            const phone = document.getElementById('pop-phone');
+            const tg = document.getElementById('pop-telegram');
+            const email = document.getElementById('pop-email');
+            const submitBtn = orderForm.querySelector('button[type="submit"]');
+
+            const toggleError = (input, show) => {
+                if(show) { input.classList.add('input-error'); input.classList.remove('focus:border-garnetLight'); isValid = false; }
+                else { input.classList.remove('input-error'); input.classList.add('focus:border-garnetLight'); }
+            };
+
+            toggleError(name, name.value.trim().length < 2);
+            toggleError(tg, tg.value.trim().length < 2);
+            toggleError(phone, !/^\+?[0-9\s\-()]{9,15}$/.test(phone.value.trim().replace(/\s+/g, '')));
+            toggleError(email, !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
+
+            if (isValid) {
+                submitBtn.innerHTML = 'Обробка...';
+                submitBtn.disabled = true;
+
+                // ❗️ ТУТ ВАШ GOOGLE SCRIPT URL
+                const googleScriptURL = 'https://script.google.com/macros/s/AKfycbwwvrn6nNWql1vaAF6qx6kUNl5GcCGMU5z8vBaqtWgQ3ZQCXL7p6b_AP0GqC4Po_E2X8g/exec'; 
+                const paymentURL = iLink.value;
+
+                const formData = new FormData();
+                formData.append('name', name.value.trim());
+                formData.append('phone', phone.value.trim());
+                formData.append('telegram', tg.value.trim()); 
+                formData.append('email', email.value.trim()); 
+                formData.append('product', iProduct.value); 
+                formData.append('price', iPrice.value); 
+                formData.append('sheetName', 'Ритуали'); 
+                
+                const utms = getUTMs();
+                formData.append('utm_source', utms.source);
+                formData.append('utm_medium', utms.medium);
+                formData.append('utm_campaign', utms.campaign);
+
+                fetch(googleScriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+                .then(() => { window.location.href = paymentURL; })
+                .catch(() => { window.location.href = paymentURL; });
+            }
+        });
+
+        ['pop-name', 'pop-phone', 'pop-telegram', 'pop-email'].forEach(id => {
+            document.getElementById(id).addEventListener('input', function() {
+                this.classList.remove('input-error');
+                this.classList.add('focus:border-garnetLight');
+            });
+        });
+    </script>
+</body>
+</html>
