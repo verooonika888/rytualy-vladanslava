@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Оплата успішна | Влада - Жриця Гекати</title>
+    
+    <!-- Підключення шрифтів -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgDark: '#050101',      
+                        bgCard: '#0a0202',      
+                        garnet: '#800020',      
+                        garnetLight: '#a31535', 
+                        textHighlight: '#c8102e', 
+                        textMuted: '#a19697'    
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            color: #f4f4f5; 
+            background-color: #050101; 
+            background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #800020 0%, #a31535 100%);
+            color: #ffffff;
+            transition: all 0.4s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 5px 25px rgba(163, 21, 53, 0.5);
+            transform: translateY(-2px);
+        }
+    </style>
+
+    <!-- КОД FACEBOOK PIXEL (Покупка) -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    
+    // ❗️ ТАРГЕТОЛОГ: Вставте ID пікселя
+    fbq('init', 'ВАШ_PIXEL_ID'); 
+    fbq('track', 'PageView');
+    
+    // Фіксація успішної покупки (Валюта EUR)
+    fbq('track', 'Purchase', { currency: 'EUR', value: 0.00 }); 
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=ВАШ_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+</head>
+<body class="antialiased relative min-h-[100dvh] flex flex-col items-center justify-center p-4"> 
+
+    <!-- ФОНОВЕ ФОТО ТА ЗАТЕМНЕННЯ -->
+    <div class="fixed inset-0 w-full h-full bg-[url('bg.jpg')] bg-cover bg-center bg-no-repeat z-[-3] opacity-40 pointer-events-none"></div>
+    <div class="fixed inset-0 w-full h-full bg-gradient-to-b from-[#050101]/30 via-[#0a0202]/60 to-[#050101]/80 z-[-2] pointer-events-none"></div>
+
+    <!-- Світіння на фоні -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-[-1]">
+        <div class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-[rgba(163,21,53,0.15)] to-transparent rounded-full blur-[80px]"></div>
+    </div>
+
+    <!-- КАРТКА УСПІХУ -->
+    <div class="relative z-10 bg-gradient-to-br from-[#210206] to-[#0a0102] border border-garnetLight/40 p-8 md:p-12 rounded-3xl w-full max-w-[450px] text-center shadow-[0_0_40px_rgba(163,21,53,0.3)]">
+        
+        <!-- Іконка галочки -->
+        <div class="mx-auto flex items-center justify-center w-20 h-20 bg-garnet/20 rounded-full border border-garnetLight mb-6 shadow-[0_0_15px_rgba(163,21,53,0.5)]">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+        </div>
+
+        <h1 class="text-3xl font-serif font-medium text-white mb-4 drop-shadow-md">Оплата успішна!</h1>
+        
+        <p class="text-textMuted text-sm leading-relaxed mb-8 font-light">
+            Дякую за довіру. Твоє місце заброньовано. <br><br>
+            <strong class="text-white font-medium">Я зв'яжусь з тобою у Telegram найближчим часом</strong>, щоб узгодити дату та час нашої діагностики.<br><br>
+            А поки переходь у мій Telegram-канал. Там багато цінного!
+        </p>
+
+        <!-- ❗️ ВСТАВИТИ ПОСИЛАННЯ НА ТЕЛЕГРАМ КАНАЛ ЗАМІСТЬ # -->
+        <a href="#" target="_blank" class="block w-full btn-primary text-[11px] font-bold py-4 rounded-xl uppercase tracking-[0.2em] transition text-center shadow-[0_0_15px_rgba(163,21,53,0.3)]">
+            Перейти в TG канал
+        </a>
+    </div>
+
+</body>
+</html>
