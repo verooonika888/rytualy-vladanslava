@@ -41,6 +41,7 @@
             color: #ffb3c6;
             transition: all 0.3s ease;
             cursor: pointer;
+            display: block;
         }
         .btn-outline:hover {
             background-color: rgba(163, 21, 53, 0.2);
@@ -72,11 +73,24 @@
             <strong class="text-white font-medium">Ваші кошти не були списані.</strong><br> Будь ласка, перевірте ліміти для оплати в інтернеті на картці або спробуйте іншу.
         </p>
 
-        <!-- Кнопка повернення на сторінку оплати WayForPay -->
-        <button onclick="window.history.back()" class="block w-full btn-outline text-[11px] font-bold py-4 rounded-xl uppercase tracking-[0.2em] transition text-center">
+        <!-- Кнопка яка веде ПРЯМО НА КАСУ -->
+        <a href="#" id="retry-btn" class="block w-full btn-outline text-[11px] font-bold py-4 rounded-xl uppercase tracking-[0.2em] transition text-center">
             Повторити платіж
-        </button>
+        </a>
     </div>
 
+    <!-- СКРИПТ ЯКИЙ ПІДТЯГУЄ ПРАВИЛЬНЕ ПОСИЛАННЯ -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var retryBtn = document.getElementById("retry-btn");
+            var lastPaymentUrl = localStorage.getItem("lastPaymentUrl"); // Дістаємо лінк з пам'яті
+            
+            if (lastPaymentUrl) {
+                retryBtn.href = lastPaymentUrl; // Вставляємо конкретний лінк на касу
+            } else {
+                retryBtn.href = "index.html"; // Якщо людина зайшла випадково, повертаємо на головну
+            }
+        });
+    </script>
 </body>
 </html>
