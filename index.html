@@ -2,14 +2,10 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <!-- Жорстке обмеження масштабування для мобільних пристроїв -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Влада | Жриця Гекати - Планетарні Ритуали</title>
     
-    <!-- Підключення шрифтів -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -38,7 +34,6 @@
             scroll-behavior: smooth; 
             background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
         }
-        
         .btn-primary {
             background: linear-gradient(90deg, #800020 0%, #a31535 100%);
             color: #ffffff;
@@ -49,7 +44,6 @@
             box-shadow: 0 5px 25px rgba(163, 21, 53, 0.5);
             transform: translateY(-2px);
         }
-        
         .btn-outline {
             border: 1px solid #a31535;
             color: #ffb3c6;
@@ -60,9 +54,7 @@
             box-shadow: 0 0 15px rgba(163, 21, 53, 0.3);
             color: #ffffff;
         }
-
         .border-line { border-color: rgba(163, 21, 53, 0.25); }
-
         .glow-orb {
             position: absolute;
             width: 600px;
@@ -72,7 +64,6 @@
             pointer-events: none;
             z-index: -1;
         }
-
         .input-error { border-color: #dc2626 !important; background-color: rgba(220, 38, 38, 0.05) !important; }
         .error-message { display: none; color: #dc2626; font-size: 0.7rem; margin-top: 4px; text-transform: uppercase; }
         .input-error + .error-message { display: block; }
@@ -94,7 +85,6 @@
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=2118340622444832&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
 </head>
 <body class="antialiased relative selection:bg-garnetLight selection:text-white overflow-x-hidden">
 
@@ -102,14 +92,13 @@
     <div class="fixed inset-0 w-full h-full bg-[url('bg.jpg')] bg-cover bg-center bg-no-repeat z-[-3] opacity-40 pointer-events-none"></div>
     <div class="fixed inset-0 w-full h-full bg-gradient-to-b from-[#050101]/30 via-[#0a0202]/60 to-[#050101]/80 z-[-2] pointer-events-none"></div>
 
-    <!-- Декоративне світіння -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
         <div class="glow-orb top-[10%] left-[50%] -translate-x-1/2"></div>
         <div class="glow-orb top-[60%] -left-[20%]"></div>
         <div class="glow-orb top-[120%] -right-[20%]"></div>
     </div>
 
-    <!-- 1. ГОЛОВНИЙ ЕКРАН ТА СИМВОЛИ -->
+    <!-- 1. ГОЛОВНИЙ ЕКРАН -->
     <div class="min-h-[100dvh] flex flex-col relative z-10">
         <header class="flex-grow flex flex-col justify-center items-center text-center px-4 relative pt-12 md:pt-0 pb-6 md:pb-0">
             <div class="max-w-4xl mx-auto flex flex-col items-center">
@@ -125,7 +114,6 @@
                 <p class="text-xs md:text-sm font-light text-textMuted mb-8 md:mb-12 max-w-2xl leading-loose tracking-wide">
                     Я — Влада. Відаюча, Жриця Гекати. Працюю через власний потік та фундаментальні закони світобудови, щоб змінити вашу реальність та відкрити справжню силу.
                 </p>
-                
                 <div class="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
                     <a href="#rituals" class="btn-primary font-bold py-4 px-10 text-[11px] uppercase tracking-[0.15em] text-center rounded-sm">
                         Ознайомитись з ритуалами
@@ -134,7 +122,6 @@
             </div>
         </header>
 
-        <!-- Декоративна полоса символів -->
         <div class="w-full border-y border-line py-5 md:py-6 flex justify-center flex-wrap gap-5 md:gap-16 text-2xl md:text-3xl text-textHighlight font-serif opacity-80 mt-auto">
             <a href="#sun" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Сонце">&#9737;</a>
             <a href="#moon" class="hover:text-white hover:scale-125 transition-all duration-300 cursor-pointer" title="Місяць">&#9789;</a>
@@ -149,9 +136,8 @@
     <!-- 2. ПРО МЕНЕ -->
     <section class="py-16 md:py-24 px-4 relative">
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-center">
-            
             <div class="relative p-2 border border-line bg-bgCard w-full max-w-[180px] md:max-w-[280px] mx-auto md:mx-0 shrink-0">
-                <img src="vladamain.jpg" alt="Жриця Гекати" class="w-full aspect-square object-cover grayscale-[20%] contrast-125 border border-line">
+                <img src="vlada.jpg" alt="Жриця Гекати" class="w-full aspect-square object-cover grayscale-[20%] contrast-125 border border-line">
                 <div class="absolute -top-3 -left-3 text-textHighlight text-xl font-serif">✦</div>
                 <div class="absolute -bottom-3 -right-3 text-textHighlight text-xl font-serif">✦</div>
             </div>
@@ -159,17 +145,14 @@
             <div class="space-y-6 md:space-y-8 text-center md:text-left">
                 <div class="text-[10px] tracking-[0.2em] uppercase text-textMuted">Шлях Жриці</div>
                 <h2 class="text-3xl md:text-4xl font-serif font-medium text-white">Моя парадигма</h2>
-                
                 <p class="text-textMuted font-light leading-loose text-sm">
                     Одне з моїх «облич» — відаюча (відьма). Я ритуально працюю переважно через власний потік як жриця Гекати, а також у традиціях язичництва: Кеметизму, Еллінізму та скандинавської традиції. Маю налагоджену взаємодію з індуїстською традицією для духовних практик та шаманічних подорожей. Як і Геката, багатолика та необмежена, я не прив’язую себе до однієї системи.
                 </p>
-                
                 <div class="pl-6 border-l-2 border-garnetLight py-2 bg-garnet/5 text-left">
                     <p class="text-xl md:text-2xl font-serif text-textHighlight italic leading-relaxed">
                         «Я — дворучник. Я не працюю в парадигмі поділу на світле і темне. Обидва полюси є частиною цілісності».
                     </p>
                 </div>
-
                 <p class="text-textMuted font-light leading-loose text-sm">
                     Мій шлях пройшов через власне пекло і досвід світла. Я не романтизую жодну зі сторін і не боюся дивитися туди, куди інші не наважуються. Моя сила здобута через довгий шлях не одного втілення. І зараз у вас є можливість відчути цю силу на собі.
                 </p>
@@ -188,7 +171,6 @@
             
             <div class="relative inline-block w-full max-w-2xl mx-auto mt-4">
                 <div class="absolute inset-0 bg-gradient-to-r from-[#800020] via-[#a31535] to-[#c8102e] blur-[50px] opacity-30 rounded-[100%] pointer-events-none"></div>
-                
                 <div class="relative border-t border-b border-[rgba(200,16,46,0.25)] py-8 px-4 bg-gradient-to-r from-transparent via-[rgba(200,16,46,0.03)] to-transparent">
                     <span class="block text-[10px] text-textHighlight tracking-[0.2em] uppercase mb-4 drop-shadow-md">Важливо</span>
                     <p class="text-lg md:text-2xl font-serif font-medium text-white uppercase tracking-widest leading-relaxed drop-shadow-[0_0_12px_rgba(200,16,46,0.3)]">
@@ -838,7 +820,9 @@
                 <a href="https://t.me/serseya_tarot" target="_blank" class="hover:text-textHighlight transition">Telegram</a>
             </div>
             
-            
+            <div class="flex gap-6 mt-6 md:mt-0">
+                <a href="#" target="_blank" class="hover:text-textHighlight transition">Договір оферти</a>
+            </div>
         </div>
     </footer>
 
@@ -970,6 +954,8 @@
                 // ❗️ ТУТ ВАШ GOOGLE SCRIPT URL
                 const googleScriptURL = 'https://script.google.com/macros/s/AKfycbwwvrn6nNWql1vaAF6qx6kUNl5GcCGMU5z8vBaqtWgQ3ZQCXL7p6b_AP0GqC4Po_E2X8g/exec'; 
                 const paymentURL = iLink.value;
+                
+                localStorage.setItem("lastPaymentUrl", paymentURL);
 
                 const formData = new FormData();
                 formData.append('name', name.value.trim());
