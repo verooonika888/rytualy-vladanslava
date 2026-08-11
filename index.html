@@ -32,14 +32,6 @@
         }
     </script>
     <style>
-        /* Жорстке фіксування екрану від "хитання" та пустих полів по боках */
-        html, body {
-            width: 100%;
-            max-width: 100vw;
-            overflow-x: hidden;
-            position: relative;
-        }
-
         body { 
             color: #f4f4f5; 
             background-color: #050101; 
@@ -85,8 +77,26 @@
         .error-message { display: none; color: #dc2626; font-size: 0.7rem; margin-top: 4px; text-transform: uppercase; }
         .input-error + .error-message { display: block; }
     </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2118340622444832');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2118340622444832&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
-<body class="antialiased relative selection:bg-garnetLight selection:text-white">
+<body class="antialiased relative selection:bg-garnetLight selection:text-white overflow-x-hidden">
 
     <!-- ФОНОВЕ ФОТО -->
     <div class="fixed inset-0 w-full h-full bg-[url('bg.jpg')] bg-cover bg-center bg-no-repeat z-[-3] opacity-40 pointer-events-none"></div>
@@ -824,8 +834,12 @@
             <p>© 2026 | ВЛАДА — ЖРИЦЯ ГЕКАТИ</p>
             
             <div class="flex gap-8 mt-6 md:mt-0">
-                <a href="#" target="_blank" class="hover:text-textHighlight transition">Instagram</a>
-                <a href="#" target="_blank" class="hover:text-textHighlight transition">Telegram</a>
+                <a href="https://www.instagram.com/vlada_n_slava" target="_blank" class="hover:text-textHighlight transition">Instagram</a>
+                <a href="https://t.me/serseya_tarot" target="_blank" class="hover:text-textHighlight transition">Telegram</a>
+            </div>
+            
+            <div class="flex gap-6 mt-6 md:mt-0">
+                <a href="#" target="_blank" class="hover:text-textHighlight transition">Договір оферти</a>
             </div>
         </div>
     </footer>
